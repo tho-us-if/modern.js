@@ -19,17 +19,16 @@ export default (): CliPlugin<AppTools> => ({
           output: {
             disableNodePolyfill: false,
           },
-          // TODO
-          // tools: {
-          //   webpackChain: (chain, { isServiceWorker }) => {
-          //     if (isServiceWorker) {
-          //       chain.resolve.alias.set(
-          //         'async_hooks',
-          //         path.resolve(__dirname, './async_hooks'),
-          //       );
-          //     }
-          //   },
-          // },
+          tools: {
+            webpackChain: (chain, { isServiceWorker }) => {
+              if (isServiceWorker) {
+                chain.resolve.alias.set(
+                  'async_hooks',
+                  path.resolve(__dirname, './async_hooks'),
+                );
+              }
+            },
+          },
         };
       },
       async afterDev() {
