@@ -1,5 +1,5 @@
 import os from 'os';
-import _ from '../compiled/lodash';
+import _ from '@compiled/lodash';
 import {
   compilePathMatcherRegExp,
   normalizeToPosixPath,

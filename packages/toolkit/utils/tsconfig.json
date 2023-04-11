@@ -6,6 +6,9 @@
     "outDir": "./dist",
     "baseUrl": "./",
     "isolatedModules": true,
+    "paths": {
+      "@compiled/*": ["./compiled/*"]
+    },
     "jsx": "react-jsx"
   },
   "include": ["src"]
