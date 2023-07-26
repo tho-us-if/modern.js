@@ -38,7 +38,7 @@ export const builderPluginArco = (): DefaultBuilderPlugin => ({
         });
       }
 
-      builderConfig.source ||= {};
+      builderConfig.source = builderConfig.source || {};
       builderConfig.source.transformImport = transformImport;
     });
   },

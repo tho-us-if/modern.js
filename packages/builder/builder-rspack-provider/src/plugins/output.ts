@@ -19,7 +19,7 @@ export const builderPluginOutput = (): BuilderPlugin => ({
       const cssPath = getDistPath(config.output, 'css');
       const cssFilename = getFilename(config.output, 'css', isProd);
 
-      rspackConfig.output ||= {};
+      rspackConfig.output = rspackConfig.output || {};
       rspackConfig.output.cssFilename = posix.join(cssPath, cssFilename);
       rspackConfig.output.cssChunkFilename = posix.join(
         cssPath,
