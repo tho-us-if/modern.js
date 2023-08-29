@@ -1,5 +1,22 @@
 # @modern-js/doc-core
 
+## 2.32.2-alpha.0
+
+### Patch Changes
+
+- bc1f8daf0ff: feat(builder): support custom logger in dev server
+
+  feat(builder): 支持自定义 logger
+
+- Updated dependencies [f96d5655742]
+- Updated dependencies [bc1f8daf0ff]
+  - @modern-js/builder@2.32.2-alpha.0
+  - @modern-js/utils@2.32.2-alpha.0
+  - @modern-js/builder-rspack-provider@2.32.2-alpha.0
+  - @modern-js/core@2.32.2-alpha.0
+  - @modern-js/doc-plugin-medium-zoom@2.32.2-alpha.0
+  - @modern-js/remark-container@2.32.2-alpha.0
+
 ## 2.32.1
 
 ### Patch Changes

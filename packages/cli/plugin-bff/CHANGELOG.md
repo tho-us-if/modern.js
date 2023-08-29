@@ -1,5 +1,19 @@
 # @modern-js/plugin-bff
 
+## 2.32.2-alpha.0
+
+### Patch Changes
+
+- 01f3ca4be25: fix: should passthrough the requestCreator
+  fix: 应该传 requestCreator
+- 01f3ca4be25: fix: should passthrough the requestCreator
+  fix: 应该透传 requestCreator
+- Updated dependencies [bc1f8daf0ff]
+  - @modern-js/utils@2.32.2-alpha.0
+  - @modern-js/bff-core@2.32.2-alpha.0
+  - @modern-js/create-request@2.32.2-alpha.0
+  - @modern-js/server-utils@2.32.2-alpha.0
+
 ## 2.32.1
 
 ### Patch Changes

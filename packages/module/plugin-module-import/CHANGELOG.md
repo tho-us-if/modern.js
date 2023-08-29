@@ -1,5 +1,12 @@
 # @modern-js/plugin-module-import
 
+## 2.32.2-alpha.0
+
+### Patch Changes
+
+- @modern-js/module-tools@2.32.2-alpha.0
+- @modern-js/libuild-plugin-swc@2.32.2-alpha.0
+
 ## 2.32.1
 
 ### Patch Changes

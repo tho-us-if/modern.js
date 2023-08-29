@@ -1,5 +1,17 @@
 # @modern-js/tailwindcss-generator
 
+## 3.1.38-alpha.0
+
+### Patch Changes
+
+- 52d4d3227b6: feat(tailwindcss-generator): bump tailwindcss version to v3.3
+
+  feat(tailwindcss-generator): 升级 tailwindcss 版本到 v3.3
+
+- d386d34b4cf: feat(tailwindcss): generate tailwind config file when run new command
+
+  feat(tailwindcss): 执行 new 命令时自动生成 tailwind 配置文件
+
 ## 3.1.37
 
 ## 3.1.36

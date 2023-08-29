@@ -1,5 +1,13 @@
 # @modern-js/utils
 
+## 2.32.2-alpha.0
+
+### Patch Changes
+
+- bc1f8daf0ff: feat(builder): support custom logger in dev server
+
+  feat(builder): 支持自定义 logger
+
 ## 2.32.1
 
 ## 2.32.0

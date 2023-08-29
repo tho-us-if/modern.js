@@ -1,5 +1,12 @@
 # @modern-js/plugin-proxy
 
+## 2.32.2-alpha.0
+
+### Patch Changes
+
+- Updated dependencies [bc1f8daf0ff]
+  - @modern-js/utils@2.32.2-alpha.0
+
 ## 2.32.1
 
 ### Patch Changes

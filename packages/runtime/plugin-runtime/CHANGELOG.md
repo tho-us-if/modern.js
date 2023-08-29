@@ -1,5 +1,18 @@
 # @modern-js/runtime
 
+## 2.32.2-alpha.0
+
+### Patch Changes
+
+- 6ea89abebde: fix: html has placeholder when not set partials
+  fix: html 在没有设置 partials 的时候,会多出占位符
+- 44da57b845c: refactor: runtime server ssr
+  refactor: 重构 runtime server ssr
+- Updated dependencies [bc1f8daf0ff]
+  - @modern-js/utils@2.32.2-alpha.0
+  - @modern-js/plugin@2.32.2-alpha.0
+  - @modern-js/types@2.32.2-alpha.0
+
 ## 2.32.1
 
 ### Patch Changes

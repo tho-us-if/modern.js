@@ -1,5 +1,11 @@
 # @modern-js/generator-common
 
+## 3.1.38-alpha.0
+
+### Patch Changes
+
+- @modern-js/plugin-i18n@2.32.2-alpha.0
+
 ## 3.1.37
 
 ### Patch Changes

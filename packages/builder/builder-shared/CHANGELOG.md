@@ -1,5 +1,19 @@
 # @modern-js/builder-shared
 
+## 2.32.2-alpha.0
+
+### Patch Changes
+
+- bc1f8daf0ff: feat(builder): support custom logger in dev server
+
+  feat(builder): 支持自定义 logger
+
+- Updated dependencies [bc1f8daf0ff]
+  - @modern-js/utils@2.32.2-alpha.0
+  - @modern-js/prod-server@2.32.2-alpha.0
+  - @modern-js/server@2.32.2-alpha.0
+  - @modern-js/types@2.32.2-alpha.0
+
 ## 2.32.1
 
 ### Patch Changes

@@ -1,5 +1,18 @@
 # @modern-js/builder
 
+## 2.32.2-alpha.0
+
+### Patch Changes
+
+- f96d5655742: feat(builder): add tailwind config to webpack build dependencies
+
+  feat(builder): 添加 tailwind config 到 webpack build dependencies 中
+
+- Updated dependencies [bc1f8daf0ff]
+  - @modern-js/builder-shared@2.32.2-alpha.0
+  - @modern-js/utils@2.32.2-alpha.0
+  - @modern-js/monorepo-utils@2.32.2-alpha.0
+
 ## 2.32.1
 
 ### Patch Changes

@@ -1,5 +1,18 @@
 # @modern-js/builder-cli
 
+## 2.32.2-alpha.0
+
+### Patch Changes
+
+- Updated dependencies [f96d5655742]
+- Updated dependencies [bc1f8daf0ff]
+  - @modern-js/builder@2.32.2-alpha.0
+  - @modern-js/builder-shared@2.32.2-alpha.0
+  - @modern-js/utils@2.32.2-alpha.0
+  - @modern-js/builder-rspack-provider@2.32.2-alpha.0
+  - @modern-js/builder-webpack-provider@2.32.2-alpha.0
+  - @modern-js/node-bundle-require@2.32.2-alpha.0
+
 ## 2.32.1
 
 ### Patch Changes

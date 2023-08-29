@@ -1,5 +1,31 @@
 # @modern-js/app-tools
 
+## 2.32.2-alpha.0
+
+### Patch Changes
+
+- Updated dependencies [f96d5655742]
+- Updated dependencies [bc1f8daf0ff]
+  - @modern-js/builder@2.32.2-alpha.0
+  - @modern-js/builder-shared@2.32.2-alpha.0
+  - @modern-js/utils@2.32.2-alpha.0
+  - @modern-js/builder-plugin-esbuild@2.32.2-alpha.0
+  - @modern-js/builder-plugin-node-polyfill@2.32.2-alpha.0
+  - @modern-js/builder-rspack-provider@2.32.2-alpha.0
+  - @modern-js/builder-webpack-provider@2.32.2-alpha.0
+  - @modern-js/core@2.32.2-alpha.0
+  - @modern-js/plugin-data-loader@2.32.2-alpha.0
+  - @modern-js/plugin-i18n@2.32.2-alpha.0
+  - @modern-js/plugin-lint@2.32.2-alpha.0
+  - @modern-js/new-action@2.32.2-alpha.0
+  - @modern-js/server-core@2.32.2-alpha.0
+  - @modern-js/prod-server@2.32.2-alpha.0
+  - @modern-js/server@2.32.2-alpha.0
+  - @modern-js/node-bundle-require@2.32.2-alpha.0
+  - @modern-js/plugin@2.32.2-alpha.0
+  - @modern-js/upgrade@2.32.2-alpha.0
+  - @modern-js/types@2.32.2-alpha.0
+
 ## 2.32.1
 
 ### Patch Changes
