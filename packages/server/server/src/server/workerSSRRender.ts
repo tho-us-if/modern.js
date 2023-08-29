@@ -22,6 +22,7 @@ export async function workerSSRRender(
     responseType: 'text',
     headers: headers as Record<string, any>,
     params,
+    adapter: require('axios/lib/adapters/http'),
   });
 
   return {
