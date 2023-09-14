@@ -107,21 +107,21 @@ jobs:
             turbo-${{ github.ref_name }}-
             turbo-
 
-      - name: Install Dependencies && Build
-        run: pnpm install
+      # - name: Install Dependencies && Build
+      #   run: pnpm install
 
-      - name: Release
-        uses: web-infra-dev/actions@v2
-        with:
-          version: ${{ github.event.inputs.version }}
-          branch: ${{ github.event.inputs.branch }}
-          type: 'release'
-          tools: 'modern'
-        env:
-          GITHUB_TOKEN: ${{ secrets.REPO_SCOPED_TOKEN }}
-          NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
-          REPOSITORY: ${{ github.repository }}
-          REF: ${{ github.ref }}
+      # - name: Release
+      #   uses: web-infra-dev/actions@v2
+      #   with:
+      #     version: ${{ github.event.inputs.version }}
+      #     branch: ${{ github.event.inputs.branch }}
+      #     type: 'release'
+      #     tools: 'modern'
+      #   env:
+      #     GITHUB_TOKEN: ${{ secrets.REPO_SCOPED_TOKEN }}
+      #     NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
+      #     REPOSITORY: ${{ github.repository }}
+      #     REF: ${{ github.ref }}
 
       - name: Trigger Rspress Release Pull Request
         if: ${{github.event.inputs.version == 'latest'}}
