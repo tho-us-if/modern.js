@@ -76,6 +76,11 @@ describe('test dev and build', () => {
   // describe('test build', () => {
   let buildRes: any;
   test('build test', async () => {
+    // teardown app
+    await killApp(app);
+    await page.close();
+    await browser.close();
+    // build app
     buildRes = await modernBuild(appDir);
   });
 
