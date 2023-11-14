@@ -33,11 +33,6 @@ describe('test dev and build', () => {
       errors.push(error.message);
     });
   });
-  afterAll(async () => {
-    await killApp(app);
-    await page.close();
-    await browser.close();
-  });
 
   test(`should render page test correctly`, async () => {
     await page.goto(`http://localhost:${appPort}/test`, {
