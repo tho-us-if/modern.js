@@ -8,6 +8,7 @@ import {
   getPort,
   modernBuild,
   launchOptions,
+  sleep,
 } from '../../../utils/modernTestUtils';
 import { SequenceWait } from '../../../utils/testInSequence';
 
@@ -70,6 +71,7 @@ describe('test dev and build', () => {
       });
 
       const root = await page.$('#root');
+      await sleep(800);
       const targetText = await page.evaluate(el => el?.textContent, root);
       expect(targetText?.trim()).toEqual('去 A去 B');
       expect(errors.length).toEqual(0);
