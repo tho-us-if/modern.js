@@ -527,7 +527,7 @@ const supportActionInCSR = async (
   });
   const rootElm = await page.$('#root');
   await page.click('.action-btn');
-  await new Promise(resolve => setTimeout(resolve, 200));
+  await new Promise(resolve => setTimeout(resolve, 400));
   const text = await page.evaluate(el => el?.textContent, rootElm);
   expect(text?.includes('profile page')).toBeTruthy();
   expect(text?.includes('modern_four_action')).toBeTruthy();
@@ -544,7 +544,7 @@ const supportActionInSSR = async (
   });
   const rootElm = await page.$('#root');
   await page.click('.action-btn');
-  await new Promise(resolve => setTimeout(resolve, 200));
+  await new Promise(resolve => setTimeout(resolve, 400));
   const text = await page.evaluate(el => el?.textContent, rootElm);
   expect(text?.includes('modern_three_action')).toBeTruthy();
 };
@@ -564,7 +564,7 @@ const supportShouldRevalidateInSSR = async (
   const text = await page.evaluate(el => el?.textContent, rootElm);
   expect(text?.includes('param is 111')).toBeTruthy();
   await page.click('.should-not-revalidate');
-  await new Promise(resolve => setTimeout(resolve, 200));
+  await new Promise(resolve => setTimeout(resolve, 400));
   const text1 = await page.evaluate(el => el?.textContent, rootElm);
   expect(text1?.includes('param is 111')).toBeTruthy();
 };
@@ -582,7 +582,7 @@ const supportShouldRevalidateInCSR = async (
   const text = await page.evaluate(el => el?.textContent, rootElm);
   expect(text?.includes('param is 111')).toBeTruthy();
   await page.click('.should-not-revalidate');
-  await new Promise(resolve => setTimeout(resolve, 200));
+  await new Promise(resolve => setTimeout(resolve, 400));
   const text1 = await page.evaluate(el => el?.textContent, rootElm);
   expect(text1?.includes('param is 111')).toBeTruthy();
 };
@@ -623,7 +623,7 @@ const supportPrefetchInIntentMode = async (
     }
   });
   await page.hover('.user-profile-btn');
-  await new Promise(resolve => setTimeout(resolve, 200));
+  await new Promise(resolve => setTimeout(resolve, 400));
   expect(isRequestJS).toBe(true);
   expect(isRequestProfileLayoutData).toBe(true);
   expect(isRequestProfilePageData).toBe(true);
@@ -641,7 +641,7 @@ const supportPrefetchWithShouldRevalidate = async (
   // make sure assets have been loaded
   await new Promise(resolve => setTimeout(resolve, 800));
   await page.click('.root-btn');
-  await new Promise(resolve => setTimeout(resolve, 200));
+  await new Promise(resolve => setTimeout(resolve, 400));
 
   let isRequestLayoutData = false;
   let isRequestPageData = false;
@@ -657,7 +657,7 @@ const supportPrefetchWithShouldRevalidate = async (
     }
   });
   await page.hover('.should-not-revalidate');
-  await new Promise(resolve => setTimeout(resolve, 200));
+  await new Promise(resolve => setTimeout(resolve, 400));
   expect(isRequestLayoutData).toBe(true);
   expect(isRequestPageData).toBe(false);
 };
