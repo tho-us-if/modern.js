@@ -8,7 +8,6 @@ import {
   getPort,
   modernBuild,
   launchOptions,
-  sleep,
 } from '../../../utils/modernTestUtils';
 import { SequenceWait } from '../../../utils/testInSequence';
 
@@ -59,7 +58,7 @@ describe('test dev and build', () => {
         waitUntil: ['networkidle0'],
       });
 
-      await sleep(800);
+      await page.waitForSelector('#root a');
       const root = await page.$('#root');
       const targetText = await page.evaluate(el => el?.textContent, root);
       expect(targetText?.trim()).toEqual('去 A去 B');
@@ -71,7 +70,7 @@ describe('test dev and build', () => {
         waitUntil: ['networkidle0'],
       });
 
-      await sleep(800);
+      await page.waitForSelector('#root a');
       const root = await page.$('#root');
       const targetText = await page.evaluate(el => el?.textContent, root);
       expect(targetText?.trim()).toEqual('去 A去 B');
