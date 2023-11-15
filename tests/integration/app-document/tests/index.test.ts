@@ -16,74 +16,19 @@ const appDir = path.resolve(__dirname, '../');
 function existsSync(filePath: string) {
   return fs.existsSync(path.join(appDir, 'dist', filePath));
 }
-const curSequenceWait = new SequenceWait();
 describe('test dev and build', () => {
-  describe('test dev', () => {
-    let app: any;
-    let appPort: number;
-    let errors;
-    let browser: Browser;
-    let page: Page;
-    curSequenceWait.add('test-dev');
-    beforeAll(async () => {
-      appPort = await getPort();
-      app = await launchApp(appDir, appPort, {}, {});
-      errors = [];
-      browser = await puppeteer.launch(launchOptions as any);
-      page = await browser.newPage();
-      page.on('pageerror', error => {
-        errors.push(error.message);
-      });
-    });
-    afterAll(async () => {
-      await killApp(app);
-      await page.close();
-      await browser.close();
-      curSequenceWait.done('test-dev');
-    });
-
-    test(`should render page test correctly`, async () => {
-      await page.goto(`http://localhost:${appPort}/test`, {
-        waitUntil: ['networkidle0'],
-      });
-
-      const root = await page.$('#root');
-      const targetText = await page.evaluate(el => el?.textContent, root);
-      expect(targetText?.trim()).toEqual('A');
-      expect(errors.length).toEqual(0);
-    });
-
-    test(`should render page sub correctly`, async () => {
-      await page.goto(`http://localhost:${appPort}/sub`, {
-        waitUntil: ['networkidle0'],
-      });
-
-      await page.waitForSelector('#root a');
-      const root = await page.$('#root');
-      const targetText = await page.evaluate(el => el?.textContent, root);
-      expect(targetText?.trim()).toEqual('去 A去 B');
-      expect(errors.length).toEqual(0);
-    });
-
-    test(`should render page sub route a correctly`, async () => {
-      await page.goto(`http://localhost:${appPort}/sub/a`, {
-        waitUntil: ['networkidle0'],
-      });
-
-      await page.waitForSelector('#root a');
-      const root = await page.$('#root');
-      const targetText = await page.evaluate(el => el?.textContent, root);
-      expect(targetText?.trim()).toEqual('去 A去 B');
-      expect(errors.length).toEqual(0);
-    });
-  });
+  const curSequenceWait = new SequenceWait();
+  curSequenceWait.add('test-dev');
 
   describe('test build', () => {
     let buildRes: any;
     beforeAll(async () => {
-      await curSequenceWait.waitUntil('test-dev');
+      console.log('===> test build will runs');
       // build app
       buildRes = await modernBuild(appDir);
+    });
+    afterAll(() => {
+      curSequenceWait.done('test-dev');
     });
 
     test(`should get right alias build!`, async () => {
@@ -200,6 +145,66 @@ describe('test dev and build', () => {
           htmlWithDoc,
         ),
       ).toBe(true);
+    });
+  });
+
+  describe('test dev', () => {
+    let app: any;
+    let appPort: number;
+    let errors;
+    let browser: Browser;
+    let page: Page;
+    beforeAll(async () => {
+      console.log('\n===> cur sequence wait: test dev beforeAll');
+      await curSequenceWait.waitUntil('test-dev');
+      appPort = await getPort();
+      app = await launchApp(appDir, appPort, {}, {});
+      errors = [];
+      browser = await puppeteer.launch(launchOptions as any);
+      page = await browser.newPage();
+      page.on('pageerror', error => {
+        errors.push(error.message);
+      });
+    });
+    afterAll(async () => {
+      await killApp(app);
+      await page.close();
+      await browser.close();
+    });
+
+    test(`should render page test correctly`, async () => {
+      await page.goto(`http://localhost:${appPort}/test`, {
+        waitUntil: ['networkidle0'],
+      });
+
+      const root = await page.$('#root');
+      const targetText = await page.evaluate(el => el?.textContent, root);
+      expect(targetText?.trim()).toEqual('A');
+      expect(errors.length).toEqual(0);
+    });
+
+    test(`should render page sub correctly`, async () => {
+      await page.goto(`http://localhost:${appPort}/sub`, {
+        waitUntil: ['networkidle0'],
+      });
+
+      await page.waitForSelector('#root a');
+      const root = await page.$('#root');
+      const targetText = await page.evaluate(el => el?.textContent, root);
+      expect(targetText?.trim()).toEqual('去 A去 B');
+      expect(errors.length).toEqual(0);
+    });
+
+    test(`should render page sub route a correctly`, async () => {
+      await page.goto(`http://localhost:${appPort}/sub/a`, {
+        waitUntil: ['networkidle0'],
+      });
+
+      await page.waitForSelector('#root a');
+      const root = await page.$('#root');
+      const targetText = await page.evaluate(el => el?.textContent, root);
+      expect(targetText?.trim()).toEqual('去 A去 B');
+      expect(errors.length).toEqual(0);
     });
   });
 });
