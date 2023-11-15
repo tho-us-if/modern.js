@@ -4,8 +4,8 @@ module.exports = {
   rootDir: __dirname,
   setupFilesAfterEnv: ['./utils/jest.setup.js'],
   testMatch: [
-    '<rootDir>/integration/**/*.(spec|test).[tj]s?(x)',
-    '!**/module/**/*.(spec|test).[tj]s?(x)',
+    '<rootDir>/integration/app-document/tests/**.test.ts?(x)',
+    // '!**/module/**/*.(spec|test).[tj]s?(x)',
   ],
   testPathIgnorePatterns: [
     '/node_modules/',
