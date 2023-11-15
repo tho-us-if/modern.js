@@ -59,6 +59,7 @@ describe('test dev and build', () => {
         waitUntil: ['networkidle0'],
       });
 
+      await sleep(800);
       const root = await page.$('#root');
       const targetText = await page.evaluate(el => el?.textContent, root);
       expect(targetText?.trim()).toEqual('去 A去 B');
@@ -70,8 +71,8 @@ describe('test dev and build', () => {
         waitUntil: ['networkidle0'],
       });
 
-      const root = await page.$('#root');
       await sleep(800);
+      const root = await page.$('#root');
       const targetText = await page.evaluate(el => el?.textContent, root);
       expect(targetText?.trim()).toEqual('去 A去 B');
       expect(errors.length).toEqual(0);
