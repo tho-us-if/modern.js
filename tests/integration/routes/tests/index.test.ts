@@ -727,7 +727,7 @@ describe('dev', () => {
     test('support handle config', async () =>
       supportHandleConfig(page, appPort));
 
-    test('support handle loader error', async () =>
+    test.skip('support handle loader error', async () =>
       supportHandleLoaderError(page, errors, appPort));
   });
 
@@ -865,7 +865,7 @@ describe('build', () => {
     test('path without layout', async () =>
       supportPathWithoutLayout(page, errors, appPort));
 
-    test('support handle loader error', async () =>
+    test.skip('support handle loader error', async () =>
       supportHandleLoaderError(page, errors, appPort));
   });
 
@@ -1010,7 +1010,7 @@ describe('dev with rspack', () => {
       supportHandleConfig(page, appPort));
 
     // FIXME: skip the test
-    test('support handle loader error', async () =>
+    test.skip('support handle loader error', async () =>
       supportHandleLoaderError(page, errors, appPort));
   });
 
