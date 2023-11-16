@@ -9,6 +9,7 @@ import {
   modernBuild,
   launchOptions,
 } from '../../../utils/modernTestUtils';
+import { printTargetDir } from '../../../utils/printDir';
 import { SequenceWait } from '../../../utils/testInSequence';
 
 const appDir = path.resolve(__dirname, '../');
@@ -161,7 +162,11 @@ describe('test dev and build', () => {
     let page: Page;
     beforeAll(async () => {
       console.log('\n===> test dev beforeAll: start');
+      // 打印 .mordernjs 目录
+      printTargetDir('../node_modules/.modern-js');
       await curSequenceWait.waitUntil('test-dev');
+      // 再打印一次
+      printTargetDir('../node_modules/.modern-js');
       console.log('\n===> test dev beforeAll: wait test-dev finished');
       appPort = await getPort();
       app = await launchApp(appDir, appPort, {}, {});
@@ -180,6 +185,8 @@ describe('test dev and build', () => {
 
     test(`should render page test correctly`, async () => {
       console.log('dev test 1');
+      printTargetDir('../node_modules/.modern-js');
+
       await page.goto(`http://localhost:${appPort}/test`, {
         waitUntil: ['networkidle0'],
       });
@@ -192,6 +199,8 @@ describe('test dev and build', () => {
 
     test(`should render page sub correctly`, async () => {
       console.log('dev test 2');
+      printTargetDir('../node_modules/.modern-js');
+
       await page.goto(`http://localhost:${appPort}/sub`, {
         waitUntil: ['networkidle0'],
       });
@@ -205,6 +214,7 @@ describe('test dev and build', () => {
 
     test(`should render page sub route a correctly`, async () => {
       console.log('dev test 3');
+      printTargetDir('../node_modules/.modern-js');
       await page.goto(`http://localhost:${appPort}/sub/a`, {
         waitUntil: ['networkidle0'],
       });
