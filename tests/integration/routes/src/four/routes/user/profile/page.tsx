@@ -2,7 +2,7 @@ import { useFetcher, useLoaderData } from '@modern-js/runtime/router';
 
 const Page = () => {
   const data = useLoaderData() as string;
-  const dataWrap = data && <span className="data-wrap">{data}</span>;
+  const dataWrap = data && <span className="data-wrapper">{data}</span>;
   const { submit } = useFetcher();
   const handleClick = () => {
     return submit({ name: 'modern_four_action' }, { method: 'post' });
