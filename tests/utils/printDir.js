@@ -27,16 +27,14 @@ function printFileTogether(directoryPath) {
       const stats = fs.statSync(filePath);
 
       if (stats.isDirectory()) {
-        printTargetDir(filePath);
+        loopDir(filePath);
       } else {
         allFile.push(filePath);
       }
     });
   }
   loopDir(directoryPath);
-  console.log('\n\n the files: ');
-  allFile.forEach(f => console.log(f));
-  console.log('\n');
+  console.log('\n\n the files: ', allFile);
 }
 
 module.exports = {
