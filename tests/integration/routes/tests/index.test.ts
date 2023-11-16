@@ -528,6 +528,7 @@ const supportActionInCSR = async (
   const rootElm = await page.$('#root');
   await page.click('.action-btn');
   await new Promise(resolve => setTimeout(resolve, 400));
+  await page.waitForSelector('.data-wrapper');
   const text = await page.evaluate(el => el?.textContent, rootElm);
   expect(text?.includes('profile page')).toBeTruthy();
   expect(text?.includes('modern_four_action')).toBeTruthy();
@@ -544,7 +545,7 @@ const supportActionInSSR = async (
   });
   const rootElm = await page.$('#root');
   await page.click('.action-btn');
-  await new Promise(resolve => setTimeout(resolve, 400));
+  await page.waitForSelector('.data-wrapper');
   const text = await page.evaluate(el => el?.textContent, rootElm);
   expect(text?.includes('modern_three_action')).toBeTruthy();
 };
