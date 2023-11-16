@@ -36,7 +36,11 @@ describe('test dev and build', () => {
 
     test(`should get right alias build!`, async () => {
       console.log('dev build 1');
-      expect(buildRes.code === 0).toBe(true);
+      if (buildRes.code !== 0) {
+        console.log('\n===> build failed, stdout: ', buildRes.stdout);
+        console.log('\n===> build failed, stderr: ', buildRes.stderr);
+      }
+      expect(buildRes.code).toEqual(0);
       expect(existsSync('route.json')).toBe(true);
       expect(existsSync('html/test/index.html')).toBe(true);
       expect(existsSync('html/sub/index.html')).toBe(true);
