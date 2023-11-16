@@ -28,10 +28,13 @@ describe('test dev and build', () => {
       buildRes = await modernBuild(appDir);
     });
     afterAll(() => {
+      console.log('===> test build finished');
+
       curSequenceWait.done('test-dev');
     });
 
     test(`should get right alias build!`, async () => {
+      console.log('dev build 1');
       expect(buildRes.code === 0).toBe(true);
       expect(existsSync('route.json')).toBe(true);
       expect(existsSync('html/test/index.html')).toBe(true);
@@ -47,6 +50,7 @@ describe('test dev and build', () => {
     });
 
     test('should have the sub html and the correct content', async () => {
+      console.log('dev test 2');
       const htmlWithDoc = fs.readFileSync(
         path.join(appDir, 'dist', 'html/sub/index.html'),
         'utf-8',
@@ -124,6 +128,7 @@ describe('test dev and build', () => {
     });
 
     test('should injected partial html content to html', async () => {
+      console.log('dev test -1');
       const htmlWithDoc = fs.readFileSync(
         path.join(appDir, 'dist', 'html/sub/index.html'),
         'utf-8',
@@ -155,8 +160,9 @@ describe('test dev and build', () => {
     let browser: Browser;
     let page: Page;
     beforeAll(async () => {
-      console.log('\n===> cur sequence wait: test dev beforeAll');
+      console.log('\n===> test dev beforeAll: start');
       await curSequenceWait.waitUntil('test-dev');
+      console.log('\n===> test dev beforeAll: wait test-dev finished');
       appPort = await getPort();
       app = await launchApp(appDir, appPort, {}, {});
       errors = [];
@@ -173,6 +179,7 @@ describe('test dev and build', () => {
     });
 
     test(`should render page test correctly`, async () => {
+      console.log('dev test 1');
       await page.goto(`http://localhost:${appPort}/test`, {
         waitUntil: ['networkidle0'],
       });
@@ -184,6 +191,7 @@ describe('test dev and build', () => {
     });
 
     test(`should render page sub correctly`, async () => {
+      console.log('dev test 2');
       await page.goto(`http://localhost:${appPort}/sub`, {
         waitUntil: ['networkidle0'],
       });
@@ -196,6 +204,7 @@ describe('test dev and build', () => {
     });
 
     test(`should render page sub route a correctly`, async () => {
+      console.log('dev test 3');
       await page.goto(`http://localhost:${appPort}/sub/a`, {
         waitUntil: ['networkidle0'],
       });
