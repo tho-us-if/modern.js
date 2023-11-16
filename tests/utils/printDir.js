@@ -10,7 +10,6 @@ function printTargetDir(directoryPath, indent = '') {
     const stats = fs.statSync(filePath);
 
     if (stats.isDirectory()) {
-      console.log(`${indent}${file}/`);
       printTargetDir(filePath, `${indent}  `);
     } else {
       console.log(`${indent}${file}`);
