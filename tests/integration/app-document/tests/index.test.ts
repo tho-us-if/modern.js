@@ -243,4 +243,35 @@ describe('test dev and build', () => {
       expect(errors.length).toEqual(0);
     });
   });
+
+  describe('fix rem', () => {
+    beforeAll(async () => {
+      console.log(
+        '\n===> test rem dev beforeAll: start ',
+        new Date().getTime(),
+      );
+      console.log(
+        '===> rem sequence ins: ',
+        curSequenceWait.sequenceResolveList.keys(),
+      );
+      await curSequenceWait.waitUntil('test-rem');
+      console.log(
+        '\n===> test rem dev beforeAll waitUntil: ',
+        new Date().getTime(),
+      );
+      // printFileTogether(path.join(__dirname, '../node_modules/.modern-js'));
+      await modernBuild(appDir, ['-c', 'modern-rem.config.ts']);
+      // printFileTogether(path.join(__dirname, '../node_modules/.modern-js'));
+    });
+
+    test('should add rem resource correct', async () => {
+      console.log('\n===> test rem 1', new Date().getTime());
+      // printFileTogether(path.join(__dirname, '../node_modules/.modern-js'));
+      const htmlNoDoc = fs.readFileSync(
+        path.join(appDir, 'dist-1', 'html/test/index.html'),
+        'utf-8',
+      );
+      expect(htmlNoDoc.includes('/static/js/convert-rem.'));
+    });
+  });
 });
