@@ -17,6 +17,8 @@ export class SequenceWait {
   async waitUntil(waitIndex: string) {
     // await Promise.all([this.sequenceList[waitIndex]]);
     await Promise.all([this.sequenceList.get(waitIndex)]);
+    // wait for some time
+    await new Promise(resolve => setTimeout(resolve, 2000));
   }
 
   async done(waitIndex: string) {

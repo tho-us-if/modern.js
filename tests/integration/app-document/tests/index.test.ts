@@ -10,7 +10,8 @@ import {
   launchOptions,
 } from '../../../utils/modernTestUtils';
 import { printFileTogether } from '../../../utils/printDir';
-import { SequenceWait } from '../../../utils/testInSequence';
+// import { SequenceWait } from '../../../utils/testInSequence';
+import { curSequence as curSequenceWait } from './test.sequence';
 
 const appDir = path.resolve(__dirname, '../');
 
@@ -18,24 +19,31 @@ function existsSync(filePath: string) {
   return fs.existsSync(path.join(appDir, 'dist', filePath));
 }
 describe('test dev and build', () => {
-  const curSequenceWait = new SequenceWait();
-  curSequenceWait.add('test-dev');
+  // const curSequenceWait = new SequenceWait();
+  // curSequenceWait.add('test-dev');
 
   describe('test build', () => {
     let buildRes: any;
     beforeAll(async () => {
-      console.log('===> test build will runs');
+      console.log('===> test build will runs', new Date().getTime()); //             1700196173103
+      // console.log('===> test build finished', new Date().getTime()); //           1700196177633
+      // console.log('===> test dev beforeAll: start', new Date().getTime()); //     1700196177633
+      // console.log('===> test dev beforeAll: wait test-dev finished'); //          1700196179635
+      // console.log('dev build 1', new Date().getTime()); //                        1700196177617
+      // console.log('===> test dev afterall: ', new Date().getTime());
+      // console.log('===> test rem dev beforeAll: start', new Date().getTime()); // 1700196174370
+      // console.log('\n===> test rem dev beforeAll waitUntil: ');
       // build app
       buildRes = await modernBuild(appDir);
     });
     afterAll(() => {
-      console.log('===> test build finished');
+      console.log('===> test build finished', new Date().getTime());
 
       curSequenceWait.done('test-dev');
     });
 
     test(`should get right alias build!`, async () => {
-      console.log('dev build 1');
+      console.log('dev build 1', new Date().getTime());
       if (buildRes.code !== 0) {
         console.log('\n===> build failed, stdout: ', buildRes.stdout);
         console.log('\n===> build failed, stderr: ', buildRes.stderr);
@@ -55,7 +63,7 @@ describe('test dev and build', () => {
     });
 
     test('should have the sub html and the correct content', async () => {
-      console.log('dev test 2');
+      console.log('dev test 2', new Date().getTime());
       const htmlWithDoc = fs.readFileSync(
         path.join(appDir, 'dist', 'html/sub/index.html'),
         'utf-8',
@@ -133,7 +141,7 @@ describe('test dev and build', () => {
     });
 
     test('should injected partial html content to html', async () => {
-      console.log('dev test -1');
+      console.log('dev test -1', new Date().getTime());
       const htmlWithDoc = fs.readFileSync(
         path.join(appDir, 'dist', 'html/sub/index.html'),
         'utf-8',
@@ -165,13 +173,16 @@ describe('test dev and build', () => {
     let browser: Browser;
     let page: Page;
     beforeAll(async () => {
-      console.log('\n===> test dev beforeAll: start');
+      console.log('\n===> test dev beforeAll: start', new Date().getTime()); // 1700191835047
       // 打印 .mordernjs 目录
-      printFileTogether(path.join(__dirname, '../node_modules/.modern-js'));
+      // printFileTogether(path.join(__dirname, '../node_modules/.modern-js'));
       await curSequenceWait.waitUntil('test-dev');
       // 再打印一次
-      printFileTogether(path.join(__dirname, '../node_modules/.modern-js'));
-      console.log('\n===> test dev beforeAll: wait test-dev finished');
+      // printFileTogether(path.join(__dirname, '../node_modules/.modern-js'));
+      console.log(
+        '\n===> test dev beforeAll: wait test-dev finished',
+        new Date().getTime(),
+      );
       appPort = await getPort();
       app = await launchApp(appDir, appPort, {}, {});
       errors = [];
@@ -185,11 +196,13 @@ describe('test dev and build', () => {
       await killApp(app);
       await page.close();
       await browser.close();
+      console.log('===> test dev afterall: ', new Date().getTime());
+      curSequenceWait.done('test-rem');
     });
 
     test(`should render page test correctly`, async () => {
       console.log('dev test 1');
-      printFileTogether(path.join(__dirname, '../node_modules/.modern-js'));
+      // printFileTogether(path.join(__dirname, '../node_modules/.modern-js'));
 
       await page.goto(`http://localhost:${appPort}/test`, {
         waitUntil: ['networkidle0'],
