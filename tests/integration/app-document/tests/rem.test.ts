@@ -12,7 +12,7 @@ jest.setTimeout(1000 * 60 * 3);
 describe('test build', () => {
   beforeAll(async () => {
     console.log('\n===> test rem dev beforeAll: start ', new Date().getTime());
-    curSequenceWait.waitUntil('test-rem');
+    await curSequenceWait.waitUntil('test-rem');
     console.log(
       '\n===> test rem dev beforeAll waitUntil: ',
       new Date().getTime(),
