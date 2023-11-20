@@ -623,6 +623,9 @@ const supportPrefetchInIntentMode = async (
       isRequestProfilePageData = true;
     }
   });
+
+  await page.waitForSelector('.user-profile-btn');
+
   await page.hover('.user-profile-btn');
   await new Promise(resolve => setTimeout(resolve, 400));
   expect(isRequestJS).toBe(true);
@@ -664,6 +667,8 @@ const supportPrefetchWithShouldRevalidate = async (
 };
 
 const curSequence = new SequenceWait();
+curSequence.add('dev-test');
+curSequence.add('build-test');
 
 describe('dev', () => {
   let app: unknown;
@@ -671,7 +676,6 @@ describe('dev', () => {
   let page: Page;
   let browser: Browser;
   const errors: string[] = [];
-  curSequence.add('dev-test');
   beforeAll(async () => {
     appPort = await getPort();
     app = await launchApp(appDir, appPort, {}, {});
@@ -812,11 +816,15 @@ describe('build', () => {
   let page: Page;
   let browser: Browser;
   const errors: string[] = [];
-  curSequence.add('build-test');
   beforeAll(async () => {
     await curSequence.waitUntil('dev-test');
     appPort = await getPort();
-    await modernBuild(appDir);
+    const buildResult = await modernBuild(appDir);
+    // log in case for test failed by build failed
+    if (buildResult.code !== 0) {
+      console.log('ut test build failed, err: ', buildResult.stderr);
+      console.log('ut test build failed, output: ', buildResult.stdout);
+    }
     app = await modernServe(appDir, appPort, {
       cwd: appDir,
     });
