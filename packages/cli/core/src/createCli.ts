@@ -63,6 +63,7 @@ export const createCli = () => {
       mergedOptions?.configFile,
       mergedOptions?.packageJsonConfig,
       mergedOptions?.loadedConfig,
+      initOptions.global,
     );
 
     const plugins = await loadPlugins(appDirectory, loaded.config, {
@@ -86,6 +87,7 @@ export const createCli = () => {
       serverConfigFile: mergedOptions?.serverConfigFile,
       serverInternalPlugins:
         mergedOptions?.internalPlugins?.server || INTERNAL_SERVER_PLUGINS,
+      inGlobalEnv: initOptions.global,
     });
 
     ConfigContext.set(loaded.config);
